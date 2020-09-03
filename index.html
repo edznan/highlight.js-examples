@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Highlight.js Demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/monokai-sublime.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+        <style>
+            body {
+                font-family: sans-serif;
+                letter-spacing: .3px;
+            }
+
+            h2 {
+                text-align: center;
+            }
+
+            .container {
+                padding: 1rem 4rem;
+            }
+
+            .divider {
+                border-top: #888888;
+                margin: 1rem 3rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Highlight.js examples</h2>
+
+            <br>
+
+            <h3>HTML</h3>
+            <pre><code class="html">
+                &lt;div class=&quot;wrapper&quot;&gt;
+                    &lt;div class=&quot;wrapper-inner&quot;&gt;
+                        &lt;p&gt;This is a small piece of &lt;b&gt;HTML&lt;/b&gt; code...&lt;/p&gt;
+                        &lt;button type=&quot;button&quot; class=&quot;btn&quot; onclick=&quot;clickFunction()&quot;&gt;Learn more&lt;/button&gt;                    
+                    &lt;/div&gt;
+
+                    &lt;br&gt;
+
+                    &lt;div class=&quot;wrapper-inner&quot;&gt;
+                        &lt;p&gt;This is another small piece of &lt;b&gt;HTML&lt;/b&gt; code...&lt;/p&gt;
+                        &lt;button type=&quot;button&quot; class=&quot;btn&quot; onclick=&quot;clickFunction()&quot;&gt;Learn more&lt;/button&gt;                    
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            </code></pre>
+
+            <br>
+            <hr class="divider">
+            <br>
+
+            <h3>CSS</h3>
+            <pre><code class="css">
+                .wrapper {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column; 
+                    justify-content: center;
+                    width: 100%;
+                    min-height: 100%;
+                    padding: 20px;
+                    margin: 4rem 0;
+                    background-color: #fff;
+                }
+
+                #formContent {
+                    -webkit-border-radius: 10px 10px 10px 10px;
+                    border-radius: 10px 10px 10px 10px;
+                    background: #fff;
+                    padding: 30px;
+                    width: 90%;
+                    max-width: 450px;
+                    position: relative;
+                    padding: 0px;
+                    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+                    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+                    text-align: center;
+                }
+            </code></pre>
+
+            <br>
+            <hr class="divider">
+            <br>
+
+            <h3>JavaScript</h3>
+            <pre><code class="javascript">
+                document.querySelector('#task-list').addEventListener('click', (e) => {
+
+                    // delete the task row from the UI
+                    UI.deleteTask(e.target);
+                
+                    // show success message
+                    UI.showAlert('Task removed.', 'warning');
+                
+                    // get the target task number
+                    let num = e.target.parentElement.parentElement.querySelector('.task-number').innerHTML;
+                
+                    // remove the task from local storage
+                    Store.removeTask(parseInt(num));
+                });
+            </code></pre>
+
+            <br>
+            <hr class="divider">
+            <br>
+
+            <h3>jQuery</h3>
+            <pre><code class="javascript">
+                if($('#username').val()) {
+                    username = $('#username').val();
+                } else {
+                    console.log('no username');
+                }
+        
+                if($('#password').val()) {
+                    password = $('#password').val();
+                } else {
+                    console.log('no password');
+                }
+        
+                if($('#remember-me-checkbox').is(':checked')) {
+                    remember_me = 'checked';
+                } 
+            </code></pre>
+
+            <br>
+            <hr class="divider">
+            <br>
+
+            <h3>PHP</h3>
+            <pre><code class="php">
+                $report_file = $_FILES['report_file'];
+
+                //file properties
+                $file_name = $report_file['name'];
+                $file_tmp = $report_file['tmp_name'];
+                $file_error = $report_file['error'];
+
+                //get extension
+                $file_ext = explode('.', $file_name);
+                $file_ext = strtolower(end($file_ext));
+                $allowed = array('txt');
+
+                //folder structure should be created for this before attempting to save files to destination!!! 
+                if (in_array($file_ext, $allowed)) {
+                    if ($file_error === 0) {
+                        $file_name_new = 'db_' . $username . '_' . $today->format('Y-m-d,h-i-s') . '.' . $file_ext;
+                        $file_destination = 'files/' . $username . '/' . $file_name_new;
+
+                        if (move_uploaded_file($file_tmp, $file_destination)) {
+                            echo 'Success!';
+                        }
+                    }
+                }
+            </code></pre>
+
+            <br>
+            <hr class="divider">
+            <br>
+
+            <h3>SQL</h3>
+            <pre><code class="sql">
+                SELECT first_name, last_name, monthly_sales, monthly_ranking 
+                FROM `employees` 
+                WHERE monthly_ranking > 1 
+                ORDER BY `monthly_sales`  
+                ASC
+            </code></pre>
+
+            <br>
+            <hr class="divider">
+            <br>
+
+            <h3>JSON</h3>
+            <pre><code class="json">
+                "results": [
+                    {
+                        "category": "Science: Mathematics",
+                        "type": "multiple",
+                        "difficulty": "medium",
+                        "question": "In base 2, what is 1 + 1?",
+                        "correct_answer": "10",
+                        "incorrect_answers": [
+                            "Two (2)",
+                            "01",
+                            "11"
+                        ]
+                    },
+                    {
+                        "category": "Science: Mathematics",
+                        "type": "multiple",
+                        "difficulty": "medium",
+                        "question": "In the hexadecimal system, what number comes after 9?",
+                        "correct_answer": "The Letter A",
+                        "incorrect_answers": [
+                            "10",
+                            "The Number 0",
+                            "16"
+                        ]
+                    }
+                ]
+            </code></pre>
+
+            <br>
+            <hr class="divider">
+            <br>
+
+            <h3>TypeScript</h3>
+            <pre><code class="typescript">
+                export class HomeComponent implements OnInit {
+                    toggle: any;
+                  
+                    constructor(themeToggle: ThemetoggleService) {
+                      this.toggle = themeToggle;
+                    }
+                  
+                    ngOnInit(): void {
+                      this.toggle.toggle();
+                    }
+                  
+                    socialMouseEnter(event): void {
+                      event.target.className += ' social-hovered';
+                    }
+                  
+                    socialMouseLeave(event): void {
+                      event.target.className = event.target.className.replace('social-hovered', '');
+                    }
+                  }
+            </code></pre>
+
+            <br>
+            <hr class="divider">
+            <br>
+
+            <h3>C#</h3>
+            <pre><code class="csharp">
+                //triangle area and circumference
+                double t1; //base
+                double t2; //height
+                double t3; //area
+                double t4; //sideA
+                double t5; //sideB
+                double t6; //circumference
+            
+                Console.WriteLine("Enter base of triangle : ");
+                t1 = Convert.ToDouble(Console.ReadLine()); //get user input
+
+                Console.WriteLine("\nEnter height of triangle  : ");
+                t2 = Convert.ToDouble(Console.ReadLine()); //get user input
+
+                Console.WriteLine("\nEnter side 1 of triangle  : ");
+                t4 = Convert.ToDouble(Console.ReadLine()); //get user input
+
+                Console.WriteLine("\nEnter side 2 of triangle  : ");
+                t5 = Convert.ToDouble(Console.ReadLine()); //get user input
+
+                //C = a + b + c
+                t6 = t1 + t4 + t5;
+
+                //A = (1/2) * base * height
+                t3 = 0.5 * t1 * t2;
+
+                Console.WriteLine("\nArea of triangle is {0}", t3);
+                Console.WriteLine("\nCircumference of triangle is {0}", t6);
+            </code></pre>
+        </div>
+    </body>
+</html>
